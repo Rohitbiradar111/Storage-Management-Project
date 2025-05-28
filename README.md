@@ -1,74 +1,71 @@
+<div align="center">
+  <div>
+    <a href="https://storage-management-project.vercel.app/" target="_blank">
+      <img src="https://github.com/user-attachments/assets/9917f0dc-02f4-4c7a-83ee-3f0e516ceb9d" alt="Project Image">
+    </a>
+  </div>
+  <h1 align="center">Storevia - Storage Manager</h1>
+</div>
 
-<h1 align="center" style="font-weight: bold;">Storevia - Storage Manager</h1>
+## 📋 <a name="table">Table of Contents</a>
 
-<p align="center">
-<a href="#technologies">Technologies</a>
-<a href="#started">Getting Started</a>
-<a href="#contribute">Contribute</a> 
-</p>
+1. 💡 [Overview](#overview)
+2. 👩‍💻 [Tech Stack](#tech-stack)
+3. ✨ [Features](#features)
+4. 📦 [Getting Started](#getting-started)
+5. 📖 [Documentation](#documentation)
+6. 📫 [Contribute](#contribute)
+7. 🐛 [Issues](#issues)
 
+## <a name="overview">💡 Overview</a>
 
-<p align="center">
 Storevia is a storage management and file sharing platform developed using Next.js, TypeScript, and Appwrite, offering seamless file handling and user collaboration features.
-<br>
-<br>
-Implemented secure OTP based authentication with Appwrite, enabling smooth signup, signin, and signout flows for all users.
-<br>
-<br>
-Integrated file upload capabilities supporting documents, images, videos, and audio, and others with a 2GB storage limit per user and a 50MB maximum file size per upload.
-<br>
-<br>
-Designed a responsive, modern user interface using Tailwind CSS and ShadCN components, featuring a dynamic dashboard that displays storage usage, recent uploads, and categorized file summaries.
-<br>
-<br>
-Enabled file actions such as rename, delete, download, view details, and sharing, along with robust search and sorting options, ensuring efficient and intuitive file organization.
-</p>
 
+## <a name="tech-stack">👩‍💻 Tech Stack</a>
 
-<p align="center">
-<a href="https://storage-management-project.vercel.app/">📱 Visit this Project</a>
-</p>
-
-<h2 id="technologies">💻 Technologies</h2>
-
-- React
 - Next.js
 - Appwrite
 - TailwindCSS
 - ShadCN
 - TypeScript
 
-<h2 id="started">🚀 Getting started</h2>
+## <a name="features">✨ Features</a>
 
- 
+- OTP based authentication with Appwrite for easy signup, login, and logout.
 
-<h3>Cloning</h3>
+- File upload support for documents, images, videos, and audio, with a 2GB limit per user and 50MB max per file.
 
-Clone the project by adding the following command in the terminal.
-Make sure your have git installed and added to path.
+- Responsive and clean user interface using Tailwind CSS and ShadCN components, with a dashboard showing storage, recent files, and file categories.
+
+- File actions like rename, delete, download, view details, and share.
+
+- Search and sort options to help users find and organize files easily.
+
+## <a name="getting-started">📦 Getting Started</a>
+
+Follow these steps to set up the project locally on your machine.
+
+**clone the repository**
 
 ```bash
 git clone https://github.com/Rohitbiradar111/Storage-Management-Project.git
 ```
-Install dependencies
+
+**Install dependencies**
 
 ```bash
   npm install
 ```
 
-Start the server
+**Start the server**
 
 ```bash
   npm run dev
 ```
 
-<h2 id="contribute">📫 Contribute</h2>
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
 
-Contributions are always welcomed. Feel free to raise issues or send in pull requests.
-
-<h3>Documentations that might help</h3>
-
-[React](https://react.dev/)
+## <a name="documentation">📖 Documentation</a>
 
 [Next.js](https://nextjs.org/)
 
@@ -80,3 +77,26 @@ Contributions are always welcomed. Feel free to raise issues or send in pull req
 
 [TypeScript](https://www.typescriptlang.org/)
 
+## <a name="contribute">📫 Contribute</a>
+
+Contributions are always welcome. Please follow these steps to contribute:
+
+1. **Fork the repository.**
+2. **Create a new branch** (`git checkout -b feature/your-feature-name`).
+3. **Make your changes** and commit them (`git commit -m 'Add some feature'`).
+4. **Push to the branch** (`git push origin feature/your-feature-name`).
+5. **Open a pull request**.
+
+Please make sure to update tests as appropriate.
+
+## <a name="issues">🐛 Issues</a>
+
+If you encounter any issues while using or setting up the project, please check the issues section to see if it has already been reported. If not, feel free to open a new issue detailing the problem.
+
+When reporting an issue, please include:
+
+- A clear and descriptive title.
+- A detailed description of the problem.
+- Steps to reproduce the issue.
+- Any relevant logs or screenshots.
+- The environment in which the issue occurs (OS, browser, Node.js version, etc.).
