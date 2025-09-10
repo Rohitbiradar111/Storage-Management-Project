@@ -1,7 +1,7 @@
 <div align="center">
   <div>
     <a href="https://storage-management-project.vercel.app/" target="_blank">
-      <img src="https://github.com/user-attachments/assets/9917f0dc-02f4-4c7a-83ee-3f0e516ceb9d" alt="Project Image">
+      <img src="https://github.com/user-attachments/assets/139b73eb-8bc4-4ba0-9b1f-e508fcaca77d" alt="Project Image">
     </a>
   </div>
   <h1 align="center">Storevia - Storage Manager</h1>
