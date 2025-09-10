@@ -52,8 +52,8 @@ const Search = () => {
   };
 
   return (
-    <div className="search">
-      <div className="search-input-wrapper">
+    <div className="relative w-full bg-white border border-black rounded-full md:max-w-[370px]">
+      <div className="flex h-[52px] flex-1 items-center gap-3 rounded-full px-4">
         <Image
           src="/assets/icons/search.svg"
           alt="Search"
@@ -63,13 +63,13 @@ const Search = () => {
         />
         <Input
           value={query}
-          placeholder="Search..."
-          className="search-input"
+          placeholder="search here..."
+          className="w-full border-none p-0 shadow-none text-black text-sm font-normal outline-none ring-offset-transparent focus:ring-transparent focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0"
           onChange={(e) => setQuery(e.target.value)}
         />
 
         {open && (
-          <ul className="search-result">
+          <ul className="absolute left-0 top-[3.2rem] z-50 border-2 flex w-full flex-col gap-3 rounded-[20px] bg-white p-4">
             {results.length > 0 ? (
               results.map((file) => (
                 <li
@@ -84,17 +84,21 @@ const Search = () => {
                       url={file.url}
                       className="size-9 min-w-9"
                     />
-                    <p className="subtitle-2 text-black">{file.name}</p>
+                    <p className="text-sm font-semibold text-black">
+                      {file.name}
+                    </p>
                   </div>
 
                   <FormattedDateTime
                     date={file.$createdAt}
-                    className="caption text-light-100"
+                    className="text-xs font-normal"
                   />
                 </li>
               ))
             ) : (
-              <p className="empty-result">No files found.</p>
+              <p className="text-sm font-normal text-center text-black">
+                No files found.
+              </p>
             )}
           </ul>
         )}

@@ -57,9 +57,9 @@ const OtpModal = ({
 
   return (
     <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
-      <AlertDialogContent className="shad-alert-dialog">
+      <AlertDialogContent className="space-y-4 md:max-w-[95%] w-fit rounded-xl md:rounded-[30px] px-4 md:px-8 py-10 bg-white outline-none">
         <AlertDialogHeader className="relative flex justify-center">
-          <AlertDialogTitle className="h2 text-center">
+          <AlertDialogTitle className="text-2xl font-bold text-center">
             Enter Your OTP
             <Image
               src="/assets/icons/close-dark.svg"
@@ -67,23 +67,41 @@ const OtpModal = ({
               width={20}
               height={20}
               onClick={() => setIsOpen(false)}
-              className="otp-close-button"
+              className="absolute md:-right-1 md:-top-7 cursor-pointer -right-2 -top-4"
             />
           </AlertDialogTitle>
-          <AlertDialogDescription className="subtitle-2 text-center text-black">
+          <AlertDialogDescription className="text-sm font-medium text-center text-black">
             We&apos;ve sent a 6 digit code to
             <span className="pl-1">{email}</span>
           </AlertDialogDescription>
         </AlertDialogHeader>
 
         <InputOTP maxLength={6} value={password} onChange={setPassword}>
-          <InputOTPGroup className="shad-otp">
-            <InputOTPSlot index={0} className="shad-otp-slot" />
-            <InputOTPSlot index={1} className="shad-otp-slot" />
-            <InputOTPSlot index={2} className="shad-otp-slot" />
-            <InputOTPSlot index={3} className="shad-otp-slot" />
-            <InputOTPSlot index={4} className="shad-otp-slot" />
-            <InputOTPSlot index={5} className="shad-otp-slot" />
+          <InputOTPGroup className="w-full flex md:gap-2 gap-1 justify-between">
+            <InputOTPSlot
+              index={0}
+              className="text-[40px] font-medium rounded-xl justify-center flex border-2 border-blue-800 size-12 md:size-16 gap-5"
+            />
+            <InputOTPSlot
+              index={1}
+              className="text-[40px] font-medium rounded-xl justify-center flex border-2 border-blue-800 size-12 md:size-16 gap-5"
+            />
+            <InputOTPSlot
+              index={2}
+              className="text-[40px] font-medium rounded-xl justify-center flex border-2 border-blue-800 size-12 md:size-16 gap-5"
+            />
+            <InputOTPSlot
+              index={3}
+              className="text-[40px] font-medium rounded-xl justify-center flex border-2 border-blue-800 size-12 md:size-16 gap-5"
+            />
+            <InputOTPSlot
+              index={4}
+              className="text-[40px] font-medium rounded-xl justify-center flex border-2 border-blue-800 size-12 md:size-16 gap-5"
+            />
+            <InputOTPSlot
+              index={5}
+              className="text-[40px] font-medium rounded-xl justify-center flex border-2 border-blue-800 size-12 md:size-16 gap-5"
+            />
           </InputOTPGroup>
         </InputOTP>
 
@@ -91,7 +109,7 @@ const OtpModal = ({
           <div className="flex w-full flex-col gap-4">
             <AlertDialogAction
               onClick={handleSubmit}
-              className="shad-submit-btn h-12"
+              className="text-sm font-medium bg-blue-500 hover:bg-blue-600 md:text-base transition-all rounded-full h-12 text-white"
               type="button"
             >
               Submit
@@ -106,12 +124,12 @@ const OtpModal = ({
               )}
             </AlertDialogAction>
 
-            <div className="subtitle-2 mt-2 text-center text-black">
+            <div className="text-sm font-medium mt-2 text-center text-black">
               Didn&apos;t get a code ?
               <Button
                 type="button"
                 variant="link"
-                className="pl-1 text-blue"
+                className="pl-1 text-blue-500 hover:underline"
                 onClick={handleResendOtp}
               >
                 Click to resend

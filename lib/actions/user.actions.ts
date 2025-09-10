@@ -1,7 +1,7 @@
 "use server";
 
 import { createAdminClient, createSessionClient } from "@/lib/appwrite";
-import { appwriteConfig } from "@/lib/appwrite/config";
+import { conf } from "@/conf/conf";
 import { Query, ID } from "node-appwrite";
 import { parseStringify } from "@/lib/utils";
 import { cookies } from "next/headers";
@@ -11,8 +11,8 @@ const getUserByEmail = async (email: string) => {
   const { databases } = await createAdminClient();
 
   const result = await databases.listDocuments(
-    appwriteConfig.databaseId,
-    appwriteConfig.usersCollectionId,
+    conf.databaseId,
+    conf.usersCollectionId,
     [Query.equal("email", [email])]
   );
 
@@ -20,7 +20,7 @@ const getUserByEmail = async (email: string) => {
 };
 
 const handleError = (error: unknown, message: string) => {
-  console.log(error, message);
+  console.error(error, message);
   throw error;
 };
 
@@ -52,8 +52,8 @@ export const createAccount = async ({
     const { databases } = await createAdminClient();
 
     await databases.createDocument(
-      appwriteConfig.databaseId,
-      appwriteConfig.usersCollectionId,
+      conf.databaseId,
+      conf.usersCollectionId,
       ID.unique(),
       {
         fullName,
@@ -98,8 +98,8 @@ export const getCurrentUser = async () => {
     const result = await account.get();
 
     const user = await databases.listDocuments(
-      appwriteConfig.databaseId,
-      appwriteConfig.usersCollectionId,
+      conf.databaseId,
+      conf.usersCollectionId,
       [Query.equal("accountId", result.$id)]
     );
 
@@ -107,7 +107,7 @@ export const getCurrentUser = async () => {
 
     return parseStringify(user.documents[0]);
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 

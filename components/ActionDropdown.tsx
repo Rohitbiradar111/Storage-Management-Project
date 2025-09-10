@@ -16,7 +16,6 @@ import {
 import { useState } from "react";
 import Image from "next/image";
 import { Models } from "node-appwrite";
-import { actionsDropdownItems } from "@/constants";
 import Link from "next/link";
 import { constructDownloadUrl } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
@@ -28,6 +27,34 @@ import {
 } from "@/lib/actions/file.actions";
 import { usePathname } from "next/navigation";
 import { FileDetails, ShareInput } from "@/components/ActionsModalContent";
+
+const actionsDropdownItems = [
+  {
+    label: "Rename",
+    icon: "/assets/icons/edit.svg",
+    value: "rename",
+  },
+  {
+    label: "Details",
+    icon: "/assets/icons/info.svg",
+    value: "details",
+  },
+  {
+    label: "Share",
+    icon: "/assets/icons/share.svg",
+    value: "share",
+  },
+  {
+    label: "Download",
+    icon: "/assets/icons/download.svg",
+    value: "download",
+  },
+  {
+    label: "Delete",
+    icon: "/assets/icons/delete.svg",
+    value: "delete",
+  },
+];
 
 const ActionDropdown = ({ file }: { file: Models.Document }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -85,7 +112,7 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
     const { value, label } = action;
 
     return (
-      <DialogContent className="shad-dialog button">
+      <DialogContent className="focus:ring-0 focus:ring-offset-0 focus-visible:border-none outline-none focus-visible:outline-none focus-visible:ring-transparent focus-visible:ring-offset-0 text-sm font-medium bg-white">
         <DialogHeader className="flex flex-col gap-3">
           <DialogTitle className="text-center text-black">{label}</DialogTitle>
           {value === "rename" && (
@@ -104,18 +131,25 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
             />
           )}
           {value === "delete" && (
-            <p className="delete-confirmation">
+            <p className="text-center text-black break-all">
               Are you sure you want to delete&nbsp;
-              <span className="delete-file-name">{file.name}</span>&nbsp;?
+              <span className="font-medium text-blue-500">{file.name}</span>
+              &nbsp;?
             </p>
           )}
         </DialogHeader>
         {["rename", "delete", "share"].includes(value) && (
           <DialogFooter className="flex flex-col gap-3 md:flex-row">
-            <Button onClick={closeAllModals} className="modal-cancel-button">
+            <Button
+              onClick={closeAllModals}
+              className="h-[52px] flex-1 rounded-full border border-black bg-white text-black hover:bg-gray-200"
+            >
               Cancel
             </Button>
-            <Button onClick={handleAction} className="modal-submit-button">
+            <Button
+              onClick={handleAction}
+              className="bg-blue-500 hover:bg-blue-600 transition-all rounded-full text-sm font-medium text-white mx-0 h-[52px] w-full flex-1"
+            >
               <p className="capitalize">{value}</p>
               {isLoading && (
                 <Image
@@ -136,7 +170,7 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
   return (
     <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
       <DropdownMenu open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
-        <DropdownMenuTrigger className="shad-no-focus">
+        <DropdownMenuTrigger className="outline-none ring-offset-transparent focus:ring-transparent focus:ring-offset-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 bg-white">
           <Image
             src="/assets/icons/dots.svg"
             alt="dots"
@@ -148,7 +182,7 @@ const ActionDropdown = ({ file }: { file: Models.Document }) => {
           {actionsDropdownItems.map((actionItem) => (
             <DropdownMenuItem
               key={actionItem.value}
-              className="shad-dropdown-item"
+              className="cursor-pointer bg-white"
               onClick={() => {
                 setAction(actionItem);
 

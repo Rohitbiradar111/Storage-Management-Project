@@ -20,12 +20,12 @@ const Page = async ({ searchParams, params }: SearchParamProps) => {
   const usageSummary = getUsageSummary(totalSpace);
 
   return (
-    <div className="page-container">
+    <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-8">
       <section className="w-full">
-        <h1 className="h1 capitalize">{type}</h1>
+        <h1 className="text-3xl font-bold capitalize">{type}</h1>
 
-        <div className="total-size-section">
-          <p className="body-1">
+        <div className="flex mt-2 flex-col justify-between md:flex-row items-center">
+          <p className="text-base font-normal">
             Total Size :&nbsp;
             <span>
               {convertFileSize(
@@ -37,22 +37,25 @@ const Page = async ({ searchParams, params }: SearchParamProps) => {
             </span>
           </p>
 
-          <div className="sort-container">
-            <p className="body-1 text-black hidden sm:block">Sort by:</p>
+          <div className="mt-5 flex items-center md:mt-0 md:gap-3">
+            <p className="text-base font-normal text-black hidden md:block">
+              Sort by:
+            </p>
             <Sort />
           </div>
         </div>
       </section>
 
-      {/* Render the files */}
       {files.total > 0 ? (
-        <section className="file-list">
+        <section className="grid w-full gap-3 grid-cols-2 md:grid-cols-4">
           {files.documents.map((file: Models.Document) => (
             <Card key={file.$id} file={file} />
           ))}
         </section>
       ) : (
-        <p className="empty-list">No files uploaded.</p>
+        <p className="text-base font-normal mt-10 text-center text-black">
+          No files uploaded.
+        </p>
       )}
     </div>
   );

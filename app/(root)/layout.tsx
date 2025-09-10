@@ -4,7 +4,7 @@ import MobileNavigation from "@/components/MobileNavigation";
 import Header from "@/components/Header";
 import { getCurrentUser } from "@/lib/actions/user.actions";
 import { redirect } from "next/navigation";
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "@/components/ui/sonner";
 
 export const dynamic = "force-dynamic";
 
@@ -24,7 +24,9 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
           accountId={currentUser.accountId}
           {...currentUser}
         />
-        <div className="main-content">{children}</div>
+        <div className="scrollbar-hide h-full flex-1 overflow-auto bg-yellow-300 px-5 py-7 md:mr-7 md:rounded-[30px] md:mb-7 md:px-9 md:py-10">
+          {children}
+        </div>
       </section>
 
       <Toaster />

@@ -17,16 +17,16 @@ const Dashboard = async () => {
   const usageSummary = getUsageSummary(totalSpace);
 
   return (
-    <div className="dashboard-container">
+    <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-2 md:gap-10">
       <section>
         <Chart used={totalSpace.used} />
 
-        <ul className="dashboard-summary-list">
+        <ul className="mt-7 grid grid-cols-2 gap-8 md:mt-10 md:gap-9">
           {usageSummary.map((summary) => (
             <Link
               href={summary.url}
               key={summary.title}
-              className="dashboard-summary-card"
+              className="relative mt-4 md:mt-1 rounded-[20px] bg-white p-2 md:p-5 transition-all hover:scale-105"
             >
               <div className="space-y-4">
                 <div className="flex justify-between gap-3">
@@ -35,18 +35,20 @@ const Dashboard = async () => {
                     width={100}
                     height={100}
                     alt="uploaded image"
-                    className="summary-type-icon"
+                    className="absolute -left-3 top-[-25px] z-10 w-[190px] object-contain"
                   />
-                  <h4 className="summary-type-size">
+                  <h4 className="text-sm font-normal md:text-base md:font-medium relative z-20 w-full text-right">
                     {convertFileSize(summary.size) || 0}
                   </h4>
                 </div>
 
-                <h5 className="summary-type-title">{summary.title}</h5>
-                <Separator className="bg-light-400" />
+                <h5 className="text-base font-bold md:text-lg md:font-medium relative z-20 text-center">
+                  {summary.title}
+                </h5>
+                <Separator className="bg-gray-200" />
                 <FormattedDateTime
                   date={summary.latestDate}
-                  className="text-center"
+                  className="text-center text-[15px]"
                 />
               </div>
             </Link>
@@ -54,8 +56,10 @@ const Dashboard = async () => {
         </ul>
       </section>
 
-      <section className="dashboard-recent-files">
-        <h2 className="h3 xl:h2 text-black">Recent Uploads</h2>
+      <section className="h-full rounded-[20px] bg-white p-5 md:p-8">
+        <h2 className="text-lg text-center font-semibold md:text-2xl md:font-bold text-black">
+          Recent Uploads
+        </h2>
         {files.documents.length > 0 ? (
           <ul className="mt-5 flex flex-col gap-5">
             {files.documents.map((file: Models.Document) => (
@@ -69,16 +73,18 @@ const Dashboard = async () => {
                   type={file.type}
                   extension={file.extension}
                   url={file.url}
-                  className="!size-12"
-                  imageClassName="!size-7"
+                  className="size-12"
+                  imageClassName="size-7"
                 />
 
-                <div className="recent-file-details">
+                <div className="flex w-full justify-between md:flex-row md:justify-between">
                   <div className="flex flex-col gap-1">
-                    <p className="recent-file-name">{file.name}</p>
+                    <p className="text-sm font-semibold w-full text-black break-all sm:max-w-[200px] lg:max-w-[250px]">
+                      {file.name}
+                    </p>
                     <FormattedDateTime
                       date={file.$createdAt}
-                      className="caption"
+                      className="text-xs font-normal"
                     />
                   </div>
                   <ActionDropdown file={file} />
@@ -87,7 +93,9 @@ const Dashboard = async () => {
             ))}
           </ul>
         ) : (
-          <p className="empty-list">No files uploaded.</p>
+          <p className="text-lg font-normal mt-10 text-center text-black">
+            No files uploaded.
+          </p>
         )}
       </section>
     </div>

@@ -10,7 +10,7 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "Storevia",
-  description: "Storevia - Storage Manager",
+  description: "Storevia - Storage Management Website",
 };
 
 export default function RootLayout({
